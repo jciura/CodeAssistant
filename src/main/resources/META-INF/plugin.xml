@@ -1,0 +1,15 @@
+<idea-plugin>
+    <id>com.example.CodeAssistant</id>
+    <name>Code Assistant</name>
+    <vendor>Jakub Ciura</vendor>
+
+    <depends>com.intellij.modules.platform</depends>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <toolWindow
+                id="CodeAssistant"
+                anchor="right"
+                factoryClass="com.example.codeassistant.ChatToolWindowFactory"
+        />
+    </extensions>
+</idea-plugin>
