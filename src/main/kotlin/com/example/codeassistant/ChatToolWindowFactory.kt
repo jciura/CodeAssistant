@@ -15,8 +15,14 @@ class ChatToolWindowFactory : ToolWindowFactory {
 
         val chatArea = JTextArea().apply {
             isEditable = false
+            lineWrap = true
+            wrapStyleWord = true
         }
-        val scrollPane = JScrollPane(chatArea)
+
+        val scrollPane = JScrollPane(chatArea).apply {
+            verticalScrollBarPolicy = JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED
+            horizontalScrollBarPolicy = JScrollPane.HORIZONTAL_SCROLLBAR_NEVER
+        }
 
         val inputField = JTextField()
 
@@ -37,6 +43,7 @@ class ChatToolWindowFactory : ToolWindowFactory {
 
                         SwingUtilities.invokeLater {
                             chatArea.append("Assistant: $answer\n")
+                            chatArea.caretPosition = chatArea.document.length
                         }
                     } catch (ex: Exception) {
                         SwingUtilities.invokeLater {
